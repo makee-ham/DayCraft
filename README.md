@@ -1,4 +1,4 @@
-***Although this is my first time using TypeScript and I'm building this app to learn, I'm also creating it as a small tribute to my cousin who just started high school.***
+***Although this is my first time using TypeScript and I'm building this app to learn, I'm also creating it as a small tribute to my cousin 현서 who just started high school.***
 
 # React + TypeScript + Vite
 
