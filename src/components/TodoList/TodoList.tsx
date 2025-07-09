@@ -52,6 +52,7 @@ export default function TodoList() {
             </span>
           </div>
         ))}
+        <button className="btn btn-circle">+</button>
       </div>
     </section>
   );
