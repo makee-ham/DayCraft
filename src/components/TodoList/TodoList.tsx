@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import Plus from "../../assets/Plus";
 
 interface Todo {
   id: number;
@@ -123,7 +124,7 @@ export default function TodoList() {
           onClick={handleClickAddBtn}
           className="btn btn-circle btn-secondary"
         >
-          +
+          <Plus />
         </button>
       </div>
     </section>
