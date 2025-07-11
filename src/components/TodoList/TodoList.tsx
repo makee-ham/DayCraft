@@ -48,6 +48,11 @@ export default function TodoList() {
   const [editText, setEditText] = useState<string>("");
 
   const handleClickAddBtn = () => {
+    if (editingId !== null && editText.trim() === "") {
+      alert("Please complete the current task before adding a new one!");
+      return;
+    }
+
     const newTodo: Todo = {
       id: Date.now(),
       text: "",
