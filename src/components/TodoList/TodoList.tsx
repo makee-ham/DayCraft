@@ -2,6 +2,7 @@ import { useReducer, useState } from "react";
 import Plus from "@assets/Plus";
 import Bin from "@/assets/Bin";
 import Edit from "@/assets/Edit";
+import Drag from "@/assets/Drag";
 
 interface Todo {
   id: number;
@@ -77,7 +78,7 @@ export default function TodoList() {
   };
 
   return (
-    <section className="max-w-md mx-auto mt-8 p-4 bg-base-100 rounded-xl shadow-md space-y-4">
+    <section className="relative max-w-md mx-auto mt-8 p-4 bg-base-100 rounded-xl shadow-md space-y-4">
       <h2 className="text-2xl font-bold text-primary text-center">
         TO DO LIST
       </h2>
@@ -85,10 +86,10 @@ export default function TodoList() {
         {todos.map((todo) => (
           <div
             key={todo.id}
-            className="flex items-center justify-between bg-base-200 rounded-lg px-3 py-2 shadow-sm gap-2"
+            className="grid grid-cols-[1fr_auto] items-center bg-base-200 rounded-lg px-3 py-2 shadow-sm gap-2"
           >
             {editingId === todo.id ? (
-              <form onSubmit={handleSubmitEdit} className="flex gap-2">
+              <form onSubmit={handleSubmitEdit} className="flex gap-1 w-full">
                 <input
                   type="text"
                   value={editText}
@@ -101,39 +102,51 @@ export default function TodoList() {
               </form>
             ) : (
               <>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() =>
-                    dispatch({ type: "TOGGLE", payload: todo.id })
-                  }
-                  className="checkbox checkbox-sm checkbox-primary"
-                />
-                <span
-                  className="flex-1 text-base-content"
-                  style={{
-                    textDecoration: todo.completed ? "line-through" : "none",
-                  }}
-                >
-                  {todo.text}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEditingId(todo.id);
-                    setEditText(todo.text);
-                  }}
-                  className="btn btn-xs btn-ghost text-primary"
-                >
-                  <Edit />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => dispatch({ type: "DELETE", payload: todo.id })}
-                  className="btn btn-xs btn-ghost text-error"
-                >
-                  <Bin />
-                </button>
+                <div className="flex items-start gap-2">
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() =>
+                      dispatch({ type: "TOGGLE", payload: todo.id })
+                    }
+                    className="checkbox checkbox-sm checkbox-primary"
+                  />
+                  <span
+                    className="flex-1 text-base-content break-words"
+                    style={{
+                      textDecoration: todo.completed ? "line-through" : "none",
+                    }}
+                  >
+                    {todo.text}
+                  </span>
+                </div>
+                <div className="ml-auto flex gap-0.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingId(todo.id);
+                      setEditText(todo.text);
+                    }}
+                    className="btn btn-xs btn-ghost text-primary"
+                  >
+                    <Edit />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      dispatch({ type: "DELETE", payload: todo.id })
+                    }
+                    className="btn btn-xs btn-ghost text-error"
+                  >
+                    <Bin />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-xs btn-ghost text-neutral cursor-move"
+                  >
+                    <Drag />
+                  </button>
+                </div>
               </>
             )}
           </div>
@@ -141,7 +154,7 @@ export default function TodoList() {
         <button
           type="button"
           onClick={handleClickAddBtn}
-          className="btn btn-circle btn-primary fixed bottom-8 right-8 shadow-lg"
+          className="absolute -bottom-4 right-0 z-10 btn btn-circle btn-primary  shadow-lg"
         >
           <Plus />
         </button>
