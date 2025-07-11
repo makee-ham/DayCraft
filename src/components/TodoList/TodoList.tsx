@@ -79,7 +79,13 @@ export default function TodoList() {
               </form>
             ) : (
               <>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() =>
+                    dispatch({ type: "TOGGLE", payload: todo.id })
+                  }
+                />
                 <span
                   style={{
                     textDecoration: todo.completed ? "line-through" : "none",
@@ -96,7 +102,12 @@ export default function TodoList() {
                 >
                   Edit
                 </button>
-                <button type="button">Delete</button>
+                <button
+                  type="button"
+                  onClick={() => dispatch({ type: "DELETE", payload: todo.id })}
+                >
+                  Delete
+                </button>
               </>
             )}
           </div>
