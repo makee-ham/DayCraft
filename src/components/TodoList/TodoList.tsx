@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import Plus from "../../assets/Plus";
+import Plus from "@assets/Plus";
 
 interface Todo {
   id: number;
