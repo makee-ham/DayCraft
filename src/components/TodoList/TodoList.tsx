@@ -1,5 +1,7 @@
 import { useReducer, useState } from "react";
 import Plus from "@assets/Plus";
+import Bin from "@/assets/Bin";
+import Edit from "@/assets/Edit";
 
 interface Todo {
   id: number;
@@ -70,19 +72,27 @@ export default function TodoList() {
   };
 
   return (
-    <section>
-      <h2>TO DO LIST</h2>
-      <div>
+    <section className="max-w-md mx-auto mt-8 p-4 bg-base-100 rounded-xl shadow-md space-y-4">
+      <h2 className="text-2xl font-bold text-primary text-center">
+        TO DO LIST
+      </h2>
+      <div className="space-y-2">
         {todos.map((todo) => (
-          <div key={todo.id}>
+          <div
+            key={todo.id}
+            className="flex items-center justify-between bg-base-200 rounded-lg px-3 py-2 shadow-sm gap-2"
+          >
             {editingId === todo.id ? (
-              <form onSubmit={handleSubmitEdit}>
+              <form onSubmit={handleSubmitEdit} className="flex gap-2">
                 <input
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
+                  className="input input-sm input-bordered flex-1"
                 />
-                <button type="submit">Save</button>
+                <button type="submit" className="btn btn-sm btn-primary">
+                  Save
+                </button>
               </form>
             ) : (
               <>
@@ -92,8 +102,10 @@ export default function TodoList() {
                   onChange={() =>
                     dispatch({ type: "TOGGLE", payload: todo.id })
                   }
+                  className="checkbox checkbox-sm checkbox-primary"
                 />
                 <span
+                  className="flex-1 text-base-content"
                   style={{
                     textDecoration: todo.completed ? "line-through" : "none",
                   }}
@@ -106,14 +118,16 @@ export default function TodoList() {
                     setEditingId(todo.id);
                     setEditText(todo.text);
                   }}
+                  className="btn btn-xs btn-ghost text-primary"
                 >
-                  Edit
+                  <Edit />
                 </button>
                 <button
                   type="button"
                   onClick={() => dispatch({ type: "DELETE", payload: todo.id })}
+                  className="btn btn-xs btn-ghost text-error"
                 >
-                  Delete
+                  <Bin />
                 </button>
               </>
             )}
@@ -122,7 +136,7 @@ export default function TodoList() {
         <button
           type="button"
           onClick={handleClickAddBtn}
-          className="btn btn-circle btn-secondary"
+          className="btn btn-circle btn-primary fixed bottom-8 right-8 shadow-lg"
         >
           <Plus />
         </button>
