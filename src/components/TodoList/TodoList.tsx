@@ -47,15 +47,21 @@ export default function TodoList() {
   const handleClickAddBtn = () => {
     const newTodo: Todo = {
       id: Date.now(),
-      text: "New Task",
+      text: "",
       completed: false,
       order: todos.length,
     };
     dispatch({ type: "ADD", payload: newTodo });
+    setEditingId(newTodo.id);
+    setEditText("");
   };
 
   const handleSubmitEdit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!editText.trim()) {
+      alert("Please enter a task!");
+      return;
+    }
     if (editingId !== null) {
       dispatch({ type: "UPDATE", payload: { id: editingId, text: editText } });
       setEditingId(null);
