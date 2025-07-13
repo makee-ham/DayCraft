@@ -95,7 +95,7 @@ export default function TodoList() {
   };
 
   return (
-    <section className="relative max-w-md mt-8 p-4 bg-base-100 rounded-xl shadow-md space-y-4">
+    <section className="relative max-w-sm p-4 border border-base-300 bg-base-100 rounded-box space-y-4">
       <h2 className="text-2xl font-bold text-primary text-center">
         TO DO LIST
       </h2>
@@ -160,14 +160,14 @@ export default function TodoList() {
                               {todo.text}
                             </span>
                           </div>
-                          <div className="ml-auto flex gap-0.5">
+                          <div className="ml-auto flex gap-1">
                             <button
                               type="button"
                               onClick={() => {
                                 setEditingId(todo.id);
                                 setEditText(todo.text);
                               }}
-                              className="btn btn-xs btn-ghost text-primary"
+                              className="btn btn-xs btn-ghost btn-circle text-primary"
                             >
                               <Edit />
                             </button>
@@ -176,14 +176,14 @@ export default function TodoList() {
                               onClick={() =>
                                 dispatch({ type: "DELETE", payload: todo.id })
                               }
-                              className="btn btn-xs btn-ghost text-error"
+                              className="btn btn-xs btn-ghost btn-circle text-error"
                             >
                               <Bin />
                             </button>
                             <button
                               type="button"
                               {...provided.dragHandleProps}
-                              className="btn btn-xs btn-ghost text-neutral cursor-move"
+                              className="text-neutral"
                             >
                               <Drag />
                             </button>
