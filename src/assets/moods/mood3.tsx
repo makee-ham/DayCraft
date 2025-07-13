@@ -1,4 +1,4 @@
-export default function mood3() {
+export default function Mood3() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
