@@ -17,14 +17,34 @@ export default function ScheduleGrid() {
   };
 
   return (
-    <section>
-      <h2>TODAY'S SCHEDULE</h2>
-      <div>
+    <section className="w-full max-w-sm">
+      <h2
+        className="text-lg font-bold text-center py-2 bg-primary text-primary-content"
+        style={{
+          borderTopLeftRadius: "var(--radius-box)",
+          borderTopRightRadius: "var(--radius-box)",
+        }}
+      >
+        TODAY&apos;S SCHEDULE
+      </h2>
+      <div
+        className="overflow-hidden border border-base-300 bg-base-100"
+        style={{
+          borderBottomLeftRadius: "var(--radius-box)",
+          borderBottomRightRadius: "var(--radius-box)",
+        }}
+      >
         {hours.map((hour, idx) => (
-          <div key={hour}>
-            <div>{hour}</div>
+          <div
+            key={hour}
+            className="grid grid-cols-[60px_1fr] border-b border-b-base-300"
+          >
+            <div className="text-sm text-center text-base-content py-2 border-r border-r-base-300">
+              {hour}
+            </div>
             <input
               type="text"
+              className="py-2 px-2 text-sm text-base-content w-full outline-none bg-transparent"
               value={schedule[idx]}
               onChange={(e) => handleChange(idx, e.target.value)}
             />
