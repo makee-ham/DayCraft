@@ -123,13 +123,13 @@ export default function TodoList() {
                       {editingId === todo.id ? (
                         <form
                           onSubmit={handleSubmitEdit}
-                          className="flex gap-1 w-full"
+                          className="flex gap-2 w-full"
                         >
                           <input
                             type="text"
                             value={editText}
                             onChange={(e) => setEditText(e.target.value)}
-                            className="input input-sm input-bordered flex-1"
+                            className="input input-sm input-accent flex-1"
                           />
                           <button
                             type="submit"
