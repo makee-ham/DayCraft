@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function ScheduleGrid() {
-  const hours: string[] = Array.from({ length: 24 }, (_, i) => {
-    const hour = (i + 5) % 24;
-    return `${String(hour).padStart(2, "0")}:00`;
-  });
+const hours: string[] = Array.from({ length: 24 }, (_, i) => {
+  const hour = (i + 5) % 24;
+  return `${String(hour).padStart(2, "0")}:00`;
+});
 
+export default function ScheduleGrid() {
   const [schedule, setSchedule] = useState<string[]>(Array(24).fill(""));
 
   const handleChange = (idx: number, value: string) => {
