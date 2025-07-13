@@ -1,10 +1,10 @@
 import { useReducer, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import type { DropResult } from "@hello-pangea/dnd";
-import Plus from "@assets/Plus";
-import Bin from "@/assets/Bin";
-import Edit from "@/assets/Edit";
-import Drag from "@/assets/Drag";
+import Plus from "@/assets/icons/Plus";
+import Bin from "@/assets/icons/Bin";
+import Edit from "@/assets/icons/Edit";
+import Drag from "@/assets/icons/Drag";
 
 interface Todo {
   id: number;
