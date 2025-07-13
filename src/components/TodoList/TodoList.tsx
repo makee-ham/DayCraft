@@ -95,7 +95,7 @@ export default function TodoList() {
   };
 
   return (
-    <section className="relative max-w-md mx-auto mt-8 p-4 bg-base-100 rounded-xl shadow-md space-y-4">
+    <section className="relative max-w-md mt-8 p-4 bg-base-100 rounded-xl shadow-md space-y-4">
       <h2 className="text-2xl font-bold text-primary text-center">
         TO DO LIST
       </h2>
@@ -203,7 +203,7 @@ export default function TodoList() {
       <button
         type="button"
         onClick={handleClickAddBtn}
-        className="absolute -bottom-4 right-0 z-10 btn btn-circle btn-primary shadow-lg"
+        className="absolute -bottom-4 -right-1 z-10 btn btn-circle btn-primary shadow-lg"
       >
         <Plus />
       </button>
