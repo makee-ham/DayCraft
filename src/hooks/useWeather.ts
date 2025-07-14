@@ -6,8 +6,20 @@ const APIkey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 const FALLBACK_LAT = 37.3827531654052;
 const FALLBACK_LON = 127.118829944284;
 
+interface WeatherData {
+  weather: {
+    main: string;
+    description: string;
+    icon: string;
+  }[];
+  main: {
+    temp: number;
+    feels_like: number;
+  };
+}
+
 export default function useWeather() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
